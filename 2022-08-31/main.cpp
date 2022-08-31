@@ -13,6 +13,7 @@ int main()
     return 0;
 }
 
+
 void draw_line(int n, char even_char, char odd_char)
 {
     for (int i = 0; i < n; ++i)
