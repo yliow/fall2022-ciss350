@@ -30,11 +30,12 @@ std::ostream & operator<<(std::ostream & cout, const Matrix & m)
 {
     for (int r = 0; r < m.nrows(); ++r)
     {
+        cout << '[';
         for (int c = 0; c < m.ncols(); ++c)
         {
             cout << m(r, c) << ' ';
         }
-        cout << '\n';
+        cout << "]\n";
     }
     return cout;
 }
