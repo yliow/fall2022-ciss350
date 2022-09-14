@@ -28,6 +28,12 @@ int main()
     Matrix q(100, 100);
     q = m;
     std::cout << q << '\n';
+
+    q = m * 3;
+    std::cout << q << '\n';
+
+    q = 2 * m;
+    std::cout << q << '\n';
     
     return 0;
 

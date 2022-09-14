@@ -27,8 +27,8 @@ public:
     Matrix operator+(const Matrix &);
 
     const Matrix & operator*=(double);
-    const Matrix & operator*(double);
-    
+    Matrix operator*(double) const;
+
 private:
     double * p_;
     int nrows_;

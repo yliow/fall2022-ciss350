@@ -96,7 +96,30 @@ const Matrix & Matrix::operator+=(const Matrix & m)
     }
 }
 
+
 Matrix Matrix::operator+(const Matrix & m)
 {
     return Matrix(*this) += m;
+}
+
+
+const Matrix & Matrix::operator*=(double c)
+{
+    for (int i = 0; i < nrows_ * ncols_; ++i)
+    {
+        p_[i] *= c;
+    }
+    return (*this);
+}
+
+
+Matrix Matrix::operator*(double c) const
+{
+    return Matrix(*this) *= c;
+}
+
+
+Matrix operator*(double d, const Matrix & m)
+{
+    return m * d;
 }
