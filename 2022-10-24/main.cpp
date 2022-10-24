@@ -48,7 +48,7 @@ std::ostream & operator<<(std::ostream & cout,
     DLNode * p = list.pheadsentinel_;
     while (p != NULL)
     {
-        cout << "  " << (*p);
+        cout << "  " << (*p) << '\n';
         p = p->next_;
     }
     cout << '>';
@@ -60,5 +60,6 @@ int main()
     DLNode n5(5);
     std::cout << "n5:" << n5 << '\n';
     DLList list;
+    std::cout << "list: " << list << '\n';
     return 0;
 }
