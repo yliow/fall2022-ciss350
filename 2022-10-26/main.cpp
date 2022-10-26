@@ -37,15 +37,20 @@ public:
         ptailsentinel_->prev_ = pheadsentinel_;
     }
 
+    ~DLList() {};                             // TODO: destructor
+    DLList(const DLList &);                   // TODO: copy constructor
+    const DLList & operator=(const DLList &); // TODO: assignment operator
+
     void insert_after(DLNode * p, int key)
     {
         // o -> o
         // p    r
         DLNode * r = p->next_;
-        DLNode * q = new DLNode(key, p, r);
+
         // o -> o -> o
         // p    q    r
         // q points to new node
+        DLNode * q = new DLNode(key, p, r);
         p->next_ = q;
         r->prev_ = q;
     }
@@ -102,14 +107,7 @@ int main()
     list.insert_head(0);
     std::cout << "list: " << list << '\n';
 
-    list.insert_tail(2);
-    list.insert_tail(4);
-    list.insert_tail(6);
-    std::cout << "list: " << list << '\n';
-
     list.delete_head();
-    std::cout << "list: " << list << '\n';
-    list.delete_tail();
     std::cout << "list: " << list << '\n';
         
     return 0;
