@@ -35,6 +35,68 @@ std::ostream & operator<<(std::ostream & cout, const BTNode & n)
 
 
  */
+
+void preorder_print(BTNode * proot)
+{
+    if (proot == NULL) // i.e. this tree is empty
+    {
+        std::cout << "* ";
+    }
+    else
+    {
+        std::cout << proot->key_ << ' '; // root
+        preorder_print(proot->left_);    // left
+        preorder_print(proot->right_);   // right
+    }
+}
+
+void postorder_print(BTNode * proot)
+{
+    if (proot == NULL) // i.e. this tree is empty
+    {
+        std::cout << "* ";
+    }
+    else
+    {
+        postorder_print(proot->left_);   // left
+        postorder_print(proot->right_);  // right
+        std::cout << proot->key_ << ' '; // root
+    }
+}
+
+void inorder_print(BTNode * proot)
+{
+    if (proot == NULL) // i.e. this tree is empty
+    {
+        std::cout << "* ";
+    }
+    else
+    {
+        inorder_print(proot->left_);    // left
+        std::cout << proot->key_ << ' '; // root
+        inorder_print(proot->right_);   // right
+    }
+}
+
+int max(int a, int b)
+{
+    return (a <= b ? b : a);
+}
+    
+int height(BTNode * proot)
+{
+    if (proot == NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        int lheight = height(proot->left_);
+        int rheight = height(proot->right_);
+        return max(lheight, rheight) + 1;
+    }
+}
+
 int main()
 {
     BTNode * p10 = new BTNode(10);
@@ -60,5 +122,25 @@ int main()
     std::cout << "*p7: " << (*p7) << '\n';
     std::cout << "*p2: " << (*p2) << '\n';
 
+    std::cout << "preorder at 10 ... \n";
+    preorder_print(p10);
+    std::cout << "\n\n";;
+    std::cout << "preorder at 5 ... \n";
+    preorder_print(p5);
+    std::cout << "\n\n";
+
+    std::cout << "inorder at 10 ... \n";
+    inorder_print(p10);
+    std::cout << "\n\n";
+
+    std::cout << "postorder at 10 ... \n";
+    postorder_print(p10);
+    std::cout << "\n\n";
+
+    std::cout << "h(10): " << height(p10) << '\n';
+    std::cout << "h(5): " << height(p5) << '\n';
+    std::cout << "h(0): " << height(p0) << '\n';
+    std::cout << "h(2): " << height(p2) << '\n';
+    std::cout << "h(NULL): " << height(NULL) << '\n';    
     return 0;
 }
