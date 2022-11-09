@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stack>
+#include <queue>
 
 // binary tree
 
@@ -78,6 +80,48 @@ void inorder_print(BTNode * proot)
     }
 }
 
+void preorder_with_stack_print(BTNode * proot)
+{
+    std::stack< BTNode * > stk;
+    stk.push(proot);
+    while (stk.size() != 0)
+    {
+        BTNode * p = stk.top();
+        stk.pop();
+        if (p == NULL)
+        {
+            std::cout << "* ";
+        }
+        else
+        {
+            std::cout << p->key_ << ' ';
+            stk.push(p->right_);
+            stk.push(p->left_);
+        }
+    }
+}
+
+void bf_print(BTNode * proot)
+{
+    std::queue< BTNode * > queue;
+    queue.push(proot);
+    while (queue.size() != 0)
+    {
+        BTNode * p = queue.front();
+        queue.pop();
+        if (p == NULL)
+        {
+            std::cout << "* ";
+        }
+        else
+        {
+            std::cout << p->key_ << ' ';
+            queue.push(p->left_);
+            queue.push(p->right_);
+        }
+    }
+}
+
 int max(int a, int b)
 {
     return (a <= b ? b : a);
@@ -141,6 +185,18 @@ int main()
     std::cout << "h(5): " << height(p5) << '\n';
     std::cout << "h(0): " << height(p0) << '\n';
     std::cout << "h(2): " << height(p2) << '\n';
-    std::cout << "h(NULL): " << height(NULL) << '\n';    
+    std::cout << "h(NULL): " << height(NULL) << '\n';
+
+    std::cout << "preorder (with stack) at 10 ... \n";
+    preorder_with_stack_print(p10);
+    std::cout << "\n\n";;
+
+    // EXERCISE: Make sure you do inorder using stack and postorder using stack
+
+    std::cout << "bf at 10 ... \n";
+    bf_print(p10);
+    std::cout << "\n\n";;
+
+    
     return 0;
 }
